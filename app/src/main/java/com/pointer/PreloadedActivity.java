@@ -44,6 +44,7 @@ public class PreloadedActivity extends Activity {
                 Intent intent = new Intent(PreloadedActivity.this, MapsActivity.class);
                 startActivity(intent);
                 finish();
+                //test
             }
         },1500);
     }
