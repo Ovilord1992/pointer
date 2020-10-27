@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "204370259263",
+    "firebase_url": "https://testadmob-e4a0d.firebaseio.com",
+    "project_id": "testadmob-e4a0d",
+    "storage_bucket": "testadmob-e4a0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204370259263:android:0c49ab776400ab978bb78a",
+        "android_client_info": {
+          "package_name": "com.example.testadmob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204370259263-ffu78alfknqs7jhf68hdnu0avsmkrunl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testadmob",
+            "certificate_hash": "15f5b70668dec1169c098507a492491deb354ba2"
+          }
+        },
+        {
+          "client_id": "204370259263-46ko4pqiptjf3k9ogql1vd555dhvf4s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA41EawQoz_-3bm4XSfuFKlo8oLp2quWYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204370259263-46ko4pqiptjf3k9ogql1vd555dhvf4s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204370259263:android:99a30c43efc6c9288bb78a",
+        "android_client_info": {
+          "package_name": "com.pointer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204370259263-46ko4pqiptjf3k9ogql1vd555dhvf4s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA41EawQoz_-3bm4XSfuFKlo8oLp2quWYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204370259263-46ko4pqiptjf3k9ogql1vd555dhvf4s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#F7122668</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="back">
+        <item name="android:background"> @drawable/backgrpond</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+
+    <style name="rec">
+        <item name="android:background">@drawable/custom_button_rec</item>
+    </style>
+
+    <style name="stop">
+        <item name="android:background">@drawable/custom_button_stop</item>
+    </style>
+
+</resources>
