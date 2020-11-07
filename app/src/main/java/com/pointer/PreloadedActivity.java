@@ -20,18 +20,18 @@ public class PreloadedActivity extends Activity {
         setContentView(R.layout.activity_preload);
 
 
-        icCenter = findViewById(R.id.ic_center);
-        imageAgraf = findViewById(R.id.imageAgraf);
-        icCenter2 = findViewById(R.id.imageLogoRight);
-
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.top_wave);
-        icCenter.setAnimation(animation);
-
-
-        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.top_wave1);
-        icCenter2.setAnimation(animation1);
-
-        Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.top_wave2);
+//        icCenter = findViewById(R.id.ic_center);
+          imageAgraf = findViewById(R.id.yellow_logo);
+//        icCenter2 = findViewById(R.id.imageLogoRight);
+//
+//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.top_wave);
+//        icCenter.setAnimation(animation);
+//
+//
+//        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.top_wave1);
+//        icCenter2.setAnimation(animation1);
+//
+        Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.top_wave);
         imageAgraf.setAnimation(animation2);
 
         //set full screen

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -7,6 +8,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <Button
+        android:id="@+id/settings"
+        android:background="@drawable/setting"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="40sp"
+        android:layout_height="40sp"/>
+
+    <Button
+        android:id="@+id/layers"
+        android:background="@drawable/layers"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        ads:layout_constraintTop_toBottomOf="@+id/settings"
+        ads:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="40sp"
+        android:layout_height="40sp"/>
+
+    <Button
+        android:id="@+id/save_button_location"
+        android:background="@drawable/save_button_location"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="50sp"
+        android:layout_height="50sp"/>
 
 
     <fragment
@@ -22,225 +53,225 @@
         map:layout_constraintVertical_bias="0.0"
         tools:context=".MapsActivity" />
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fab_addButtonColorNormal="#D0FFFEFE"
-        app:fab_addButtonColorPressed="#f1f1f1"
-        app:fab_addButtonPlusIconColor="#5E5E5E"
-        app:fab_labelStyle="@style/back"
-        app:fab_labelsPosition="right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        map:layout_constraintBottom_toTopOf="@+id/linearLayout6"
-        map:layout_constraintHorizontal_bias="0.0"
-        map:layout_constraintVertical_bias="1.0">
+<!--    <com.getbase.floatingactionbutton.FloatingActionsMenu-->
+<!--        android:id="@+id/multiply"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:fab_addButtonColorNormal="#D0FFFEFE"-->
+<!--        app:fab_addButtonColorPressed="#f1f1f1"-->
+<!--        app:fab_addButtonPlusIconColor="#5E5E5E"-->
+<!--        app:fab_labelStyle="@style/back"-->
+<!--        app:fab_labelsPosition="right"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        map:layout_constraintBottom_toTopOf="@+id/linearLayout6"-->
+<!--        map:layout_constraintHorizontal_bias="0.0"-->
+<!--        map:layout_constraintVertical_bias="1.0">-->
 
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/styles_night"
-            app:fab_title="@string/night"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_baseline_brightness_3_24"
-            app:fab_size="mini" />
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/styles_night"-->
+<!--            app:fab_title="@string/night"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_baseline_brightness_3_24"-->
+<!--            app:fab_size="mini" />-->
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/styles_day"
-            app:fab_title="@string/day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_baseline_wb_sunny_24"
-            app:fab_size="mini" />
-
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/driving_mode"
-            app:fab_title="@string/driving"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_baseline_drive_eta_24"
-            app:fab_size="mini" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/walking_mode"
-            app:fab_title="@string/walking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_baseline_directions_walk_24"
-            app:fab_size="mini" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mapTopmap"
-            app:fab_title="@string/scheme"
-            style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_map_blue"
-            app:fab_size="mini"
-            tools:ignore="PrivateResource" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/sputnik"
-            app:fab_title="@string/satellite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:bottomRightRadius="100dp"
-            app:fab_colorNormal="#97FFFEFE"
-            app:fab_colorPressed="#90E37171"
-            app:fab_icon="@drawable/ic_sput"
-            app:fab_size="mini"
-            tools:ignore="PrivateResource" />
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/styles_day"-->
+<!--            app:fab_title="@string/day"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_baseline_wb_sunny_24"-->
+<!--            app:fab_size="mini" />-->
 
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/driving_mode"-->
+<!--            app:fab_title="@string/driving"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_baseline_drive_eta_24"-->
+<!--            app:fab_size="mini" />-->
 
-    <SearchView
-        android:id="@+id/sv_location"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:animateLayoutChanges="true"
-        android:background="@drawable/bg_round"
-        android:elevation="5dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="@string/search"
-        map:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        map:layout_constraintEnd_toEndOf="@+id/mapTop"
-        map:layout_constraintHorizontal_bias="0.882"
-        map:layout_constraintStart_toStartOf="@+id/mapTop"
-        map:layout_constraintTop_toTopOf="@+id/mapTop"
-        map:layout_constraintVertical_bias="0.0">
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/walking_mode"-->
+<!--            app:fab_title="@string/walking"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_baseline_directions_walk_24"-->
+<!--            app:fab_size="mini" />-->
 
-    </SearchView>
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/mapTopmap"-->
+<!--            app:fab_title="@string/scheme"-->
+<!--            style="@style/Widget.AppCompat.ImageButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_map_blue"-->
+<!--            app:fab_size="mini"-->
+<!--            tools:ignore="PrivateResource" />-->
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@android:color/white"
-        map:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="@+id/mapTop"
-        map:layout_constraintVertical_bias="1.0">
-
-
-        <ImageButton
-            android:id="@+id/btnGetLoc"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_marker" />
-
-        <ImageButton
-            android:id="@+id/car"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_wey" />
-
-        <ImageButton
-            android:id="@+id/mapView"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_book" />
-
-        <ImageButton
-            android:id="@+id/getWay"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_bask" />
+<!--        <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/sputnik"-->
+<!--            app:fab_title="@string/satellite"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:bottomRightRadius="100dp"-->
+<!--            app:fab_colorNormal="#97FFFEFE"-->
+<!--            app:fab_colorPressed="#90E37171"-->
+<!--            app:fab_icon="@drawable/ic_sput"-->
+<!--            app:fab_size="mini"-->
+<!--            tools:ignore="PrivateResource" />-->
 
 
-    </LinearLayout>
+<!--    </com.getbase.floatingactionbutton.FloatingActionsMenu>-->
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        map:layout_constraintBottom_toBottomOf="parent"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent">
+<!--    <SearchView-->
+<!--        android:id="@+id/sv_location"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginStart="1dp"-->
+<!--        android:layout_marginEnd="1dp"-->
+<!--        android:animateLayoutChanges="true"-->
+<!--        android:background="@drawable/bg_round"-->
+<!--        android:elevation="5dp"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        android:queryHint="@string/search"-->
+<!--        map:layout_constraintBottom_toTopOf="@+id/linearLayout"-->
+<!--        map:layout_constraintEnd_toEndOf="@+id/mapTop"-->
+<!--        map:layout_constraintHorizontal_bias="0.882"-->
+<!--        map:layout_constraintStart_toStartOf="@+id/mapTop"-->
+<!--        map:layout_constraintTop_toTopOf="@+id/mapTop"-->
+<!--        map:layout_constraintVertical_bias="0.0">-->
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/renember" />
+<!--    </SearchView>-->
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/way" />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:background="@android:color/white"-->
+<!--        map:layout_constraintBottom_toTopOf="@+id/linearLayout3"-->
+<!--        map:layout_constraintEnd_toEndOf="parent"-->
+<!--        map:layout_constraintStart_toStartOf="parent"-->
+<!--        map:layout_constraintTop_toTopOf="@+id/mapTop"-->
+<!--        map:layout_constraintVertical_bias="1.0">-->
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/my_places" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/delite" />
-    </LinearLayout>
+<!--        <ImageButton-->
+<!--            android:id="@+id/btnGetLoc"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#FFFFFF"-->
+<!--            android:src="@drawable/ic_marker" />-->
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:background="#262837"
-        android:orientation="horizontal"
-        map:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintHorizontal_bias="0.0"
-        map:layout_constraintStart_toStartOf="parent" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/car"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#FFFFFF"-->
+<!--            android:src="@drawable/ic_wey" />-->
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        map:layout_constraintBottom_toTopOf="@+id/linearLayout6"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent">
+<!--        <ImageButton-->
+<!--            android:id="@+id/mapView"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#FFFFFF"-->
+<!--            android:src="@drawable/ic_book" />-->
 
-    </LinearLayout>
+<!--        <ImageButton-->
+<!--            android:id="@+id/getWay"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#FFFFFF"-->
+<!--            android:src="@drawable/ic_bask" />-->
+
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/white"-->
+<!--        android:orientation="horizontal"-->
+<!--        map:layout_constraintBottom_toBottomOf="parent"-->
+<!--        map:layout_constraintEnd_toEndOf="parent"-->
+<!--        map:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/renember" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView3"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/way" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView4"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/my_places" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView5"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/delite" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout6"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="1.5dp"-->
+<!--        android:background="#262837"-->
+<!--        android:orientation="horizontal"-->
+<!--        map:layout_constraintBottom_toTopOf="@+id/linearLayout"-->
+<!--        map:layout_constraintEnd_toEndOf="parent"-->
+<!--        map:layout_constraintHorizontal_bias="0.0"-->
+<!--        map:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        map:layout_constraintBottom_toTopOf="@+id/linearLayout6"-->
+<!--        map:layout_constraintEnd_toEndOf="parent"-->
+<!--        map:layout_constraintStart_toStartOf="parent">-->
+
+<!--    </LinearLayout>-->
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -252,74 +283,72 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id"
         ads:layout_constraintHorizontal_bias="0.494"
-        map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toBottomOf="@+id/sv_location"
+        ads:layout_constraintTop_toTopOf="parent"
         tools:ignore="ObsoleteLayoutParam">
 
     </com.google.android.gms.ads.AdView>
 
-    <ImageView
-        android:id="@+id/style_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_round_state"
-        android:elevation="10dp"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintHorizontal_bias="0.957"
-        ads:layout_constraintTop_toTopOf="@+id/mapTop"
-        ads:layout_constraintVertical_bias="0.241"
-        map:layout_constraintBottom_toBottomOf="parent"
-        map:layout_constraintStart_toStartOf="@+id/multiply" />
+<!--    <ImageView-->
+<!--        android:id="@+id/style_mode"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_round_state"-->
+<!--        android:elevation="10dp"-->
+<!--        ads:layout_constraintEnd_toEndOf="parent"-->
+<!--        ads:layout_constraintHorizontal_bias="0.957"-->
+<!--        ads:layout_constraintTop_toTopOf="@+id/mapTop"-->
+<!--        ads:layout_constraintVertical_bias="0.241"-->
+<!--        map:layout_constraintBottom_toBottomOf="parent" />-->
 
-    <ImageView
-        android:id="@+id/go_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_round_state"
-        android:elevation="10dp"
-        ads:layout_constraintBottom_toBottomOf="@+id/mapTop"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintHorizontal_bias="0.957"
-        ads:layout_constraintStart_toStartOf="@+id/mapTop"
-        ads:layout_constraintTop_toBottomOf="@+id/style_mode"
-        ads:layout_constraintVertical_bias="0.022" />
+<!--    <ImageView-->
+<!--        android:id="@+id/go_mode"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_round_state"-->
+<!--        android:elevation="10dp"-->
+<!--        ads:layout_constraintBottom_toBottomOf="@+id/mapTop"-->
+<!--        ads:layout_constraintEnd_toEndOf="parent"-->
+<!--        ads:layout_constraintHorizontal_bias="0.957"-->
+<!--        ads:layout_constraintStart_toStartOf="@+id/mapTop"-->
+<!--        ads:layout_constraintTop_toBottomOf="@+id/style_mode"-->
+<!--        ads:layout_constraintVertical_bias="0.022" />-->
 
-    <TextView
-        android:id="@+id/distance_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:textColor="#03A9F4"
-        android:textSize="20dp"
-        ads:layout_constraintBottom_toBottomOf="@+id/mapTop"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/distance_display"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="84dp"-->
+<!--        android:textColor="#03A9F4"-->
+<!--        android:textSize="20dp"-->
+<!--        ads:layout_constraintBottom_toBottomOf="@+id/mapTop"-->
+<!--        ads:layout_constraintEnd_toEndOf="parent"-->
+<!--        ads:layout_constraintStart_toStartOf="parent" />-->
 
-    <Button
-        android:id="@+id/polilineBuilder"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/custom_button_rec"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="@+id/mapTop"
-        ads:layout_constraintHorizontal_bias="0.97"
-        ads:layout_constraintStart_toEndOf="@+id/multiply"
-        ads:layout_constraintTop_toTopOf="@+id/mapTop"
-        ads:layout_constraintVertical_bias="0.482" />
+<!--    <Button-->
+<!--        android:id="@+id/polilineBuilder"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:background="@drawable/custom_button_rec"-->
+<!--        ads:layout_constraintBottom_toBottomOf="parent"-->
+<!--        ads:layout_constraintEnd_toEndOf="@+id/mapTop"-->
+<!--        ads:layout_constraintHorizontal_bias="0.97"-->
+<!--        ads:layout_constraintStart_toEndOf="@+id/multiply"-->
+<!--        ads:layout_constraintTop_toTopOf="@+id/mapTop"-->
+<!--        ads:layout_constraintVertical_bias="0.482" />-->
 
-    <Button
-        android:id="@+id/polilineBuilderStop"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_baseline_stop_24"
-        android:visibility="gone"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="@+id/mapTop"
-        ads:layout_constraintHorizontal_bias="0.972"
-        ads:layout_constraintStart_toEndOf="@+id/multiply"
-        ads:layout_constraintTop_toTopOf="@+id/mapTop"
-        ads:layout_constraintVertical_bias="0.482" />
+<!--    <Button-->
+<!--        android:id="@+id/polilineBuilderStop"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:background="@drawable/ic_baseline_stop_24"-->
+<!--        android:visibility="gone"-->
+<!--        ads:layout_constraintBottom_toBottomOf="parent"-->
+<!--        ads:layout_constraintEnd_toEndOf="@+id/mapTop"-->
+<!--        ads:layout_constraintHorizontal_bias="0.972"-->
+<!--        ads:layout_constraintStart_toEndOf="@+id/multiply"-->
+<!--        ads:layout_constraintTop_toTopOf="@+id/mapTop"-->
+<!--        ads:layout_constraintVertical_bias="0.482" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
