@@ -20,6 +20,7 @@
         android:layout_height="10dp"
         android:src="@drawable/line_sheet"/>
 
+
     <TextView
         android:id="@+id/text_maps_name"
         android:text="Введите название вашего места"
@@ -41,7 +42,7 @@
 
     <EditText
         android:layout_marginTop="15sp"
-        android:id="@+id/et_password"
+        android:id="@+id/fullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_edittext"
@@ -51,6 +52,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="20dp" />
+
+
+    <ImageView
+        android:id="@+id/userImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_width="0sp"
+        android:layout_height="150sp"
+        app:layout_constraintTop_toBottomOf="@+id/fullName"/>
+
+    <Button
+        android:onClick="takePicture"
+        android:id="@+id/btn_add_photo_DB"
+        android:background="@drawable/round_button_ok"
+        android:text="Добавить фото"
+        android:layout_width="110sp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/userImage"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:onClick="saveUser"
+        android:id="@+id/btn_save_position_acept"
+        android:background="@drawable/round_button_ok"
+        android:text="Сохранить"
+        android:layout_width="110sp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_photo_DB"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_save_position_cencel"
+        android:layout_width="110sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button_cencel"
+        android:text="Отмена"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_photo_DB" />
 
 
 

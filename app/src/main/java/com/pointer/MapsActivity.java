@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -20,11 +21,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,7 +36,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.ads.AdListener;
@@ -71,6 +76,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.maps.android.SphericalUtil;
+import com.pointer.DataModel.UserDAO;
+import com.pointer.DataModel.UserDatabase;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.io.IOException;
@@ -82,10 +89,17 @@ import static com.pointer.Calendar.getDate;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    ImageView imageView;
+    Bitmap bmpImage;
+    EditText name, uName, pas, dob;
+
+    UserDAO userDAO;
+
     boolean stule_state = false;
     boolean mode_state = false;
     boolean is_started = false;
 //    int curentDate;
+    final int CAMERA_INTENT = -1;
 
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
@@ -93,7 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     FusedLocationProviderClient fusedLocationProviderClient;
     private LocationSettingsRequest locationSettingsRequest;
     Location currentLocation;
-    ImageView style_mode, go_mode;
+    ImageView style_mode, go_mode, ImageView;
     TextView distance_display;
     Button polilineBuilder, layers;
     Marker myMarker, myMarker1;
@@ -119,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //
     private View mapViews;
 
-    Button polilineBuilderStop, btn_save_location;
+    Button polilineBuilderStop, btn_save_location, my_location, settings;
 
     private SharedPreferences sharedPreferences;
 
@@ -142,14 +156,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-            window.setNavigationBarColor(Color.YELLOW);
-        }
+        sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
 
 
         //ActivityCompat.requestPermissions(MapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
@@ -227,12 +235,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        polilineBuilderStop = (Button) findViewById(R.id.polilineBuilderStop);
 //        distance_display = (TextView) findViewById(R.id.distance_display);
 
+          ImageView = (ImageView) findViewById(R.id.ImageView555);
+
         layers = findViewById(R.id.layers);
         btn_save_location = findViewById(R.id.save_button_location);
+        my_location = findViewById(R.id.my_location);
+        settings = findViewById(R.id.settings);
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getCurrentLocation();
+
+        my_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCurrentLocation();
+                buildLocationRequest();
+                LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+            }
+        });
 
         layers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,14 +352,57 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btn_save_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MapsActivity.this);
-                bottomSheetDialog.setContentView(R.layout.bottom_sheet_save_position);
-                bottomSheetDialog.setCanceledOnTouchOutside(true);
-                bottomSheetDialog.show();
+                final BottomSheetDialog bottomSheetDialogs = new BottomSheetDialog(MapsActivity.this);
+                bottomSheetDialogs.setContentView(R.layout.bottom_sheet_save_position);
+                bottomSheetDialogs.setCanceledOnTouchOutside(true);
+                bottomSheetDialogs.show();
 
-                Button layer_sput = bottomSheetDialog.findViewById(R.id.layer_sput);
-                Button layer_shem = bottomSheetDialog.findViewById(R.id.layer_shema);
-                Button layer_probki = bottomSheetDialog.findViewById(R.id.layer_probki);
+
+
+                Button btn_save_position_acept = bottomSheetDialogs.findViewById(R.id.btn_save_position_acept);
+                Button btn_add_photo_DB = bottomSheetDialogs.findViewById(R.id.btn_add_photo_DB);
+                Button btn_save_position_cencel = bottomSheetDialogs.findViewById(R.id.btn_save_position_cencel);
+                Button layer_probki = bottomSheetDialogs.findViewById(R.id.layer_probki);
+
+                imageView = findViewById(R.id.userImage);
+                bmpImage = null;
+                name = findViewById(R.id.fullName);
+                userDAO = UserDatabase.getInstance(MapsActivity.this).userDao();
+
+                btn_add_photo_DB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (intent.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(intent, CAMERA_INTENT);
+                        }
+                    }
+
+                });
+
+
+
+
+                btn_save_position_acept.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MapsActivity.this);
+                        bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_photo);
+                        bottomSheetDialog.setCanceledOnTouchOutside(true);
+                        bottomSheetDialog.show();
+                        bottomSheetDialogs.cancel();
+
+
+
+                    }
+                });
+
+                btn_save_position_cencel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialogs.cancel();
+                    }
+                });
 
             }
         });
@@ -593,6 +659,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapViews = mapFragment.getView();
     }
 
+    private void RequestCameraPermission(){
+        if (ContextCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MapsActivity.this, new String[]{
+                    Manifest.permission.CAMERA
+            }, 100);
+        }
+    }
+
+
 
 
 //    @Override
@@ -604,7 +679,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
 
@@ -622,10 +697,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     default:
                         break;
                 }
-                break;
+            case CAMERA_INTENT:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        if (resultCode == Activity.RESULT_OK) {
+                            bmpImage = (Bitmap) data.getExtras().get("data");
+                            imageView.setImageBitmap(bmpImage);
+                        } else {
+                            Toast.makeText(this, "Bitmap is NULL", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
+
         }
 
+
     }
+
 
 
 //    public void saveGeolocation() {
@@ -1038,6 +1126,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationRequest.setInterval(2000);
             locationRequest.setFastestInterval(0);
         }
+
 
 
 //        @Override

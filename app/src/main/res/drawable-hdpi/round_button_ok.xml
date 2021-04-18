@@ -2,7 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/btn_cancel"/>
+    <solid android:color="@color/btn_acecpt"/>
 
     <corners android:radius="10dp"/>
+
+
 </shape>

@@ -50,9 +50,18 @@ dependencies {
 
     implementation 'com.google.android.ump:user-messaging-platform:1.0.0'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     //gson object
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.Shashank02051997:FancyToast-Android:0.1.8'
+
+
+    def room_version = "1.1.1"
+
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
 
 }

@@ -5,4 +5,9 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorSheet">#F8ECDC</color>
     <color name="colorBlack">#000000</color>
+    <color name="actionBar">#FFD21D</color>
+    <color name="btn_acecpt">#FFD21D</color>
+    <color name="btn_cancel">#D83030</color>
+
+    <color name="colorRecycler">#CAB79F</color>
 </resources>
